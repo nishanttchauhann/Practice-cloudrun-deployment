@@ -1,11 +1,12 @@
 steps:
-# Build the Docker image
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build', '-t', 'asia-south1-docker.pkg.dev/$PROJECT_ID/cloud-run-repo/cloud-run-github-demo', '.']
 
-# Push the Docker image to Artifact Registry
 - name: 'gcr.io/cloud-builders/docker'
   args: ['push', 'asia-south1-docker.pkg.dev/$PROJECT_ID/cloud-run-repo/cloud-run-github-demo']
 
 images:
 - 'asia-south1-docker.pkg.dev/$PROJECT_ID/cloud-run-repo/cloud-run-github-demo'
+
+options:
+  logging: CLOUD_LOGGING_ONLY
